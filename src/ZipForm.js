@@ -16,18 +16,16 @@ const INPUT_STYLE = {
 
 export default class ZipForm extends Component {
 
-  // constructor () {
-  //   super();
-  //   this.state = {
-  //     zipCode: ""
-  //   }
-  // }
+  componentDidMount () {
+    this.refs.input.focus();
+  }
 
   render() {
     return (
       <VLayout justifyItems="center">
         <h3 style={HEADER_STYLE}>Enter your zip code</h3>
         <input
+          ref="input"
           style={INPUT_STYLE}
           type="number"
           onChange={this._onKeyboardInput}

@@ -9,6 +9,10 @@ const GOOGLE_API_KEY = "AIzaSyB_Br-_gaXwK_OxF1HgNcU5LGeja7oIp1A";
 const SHEET_NAME = "Weekly%20Call%20to%20Action";
 const CELL = "B2";
 
+const CONTAINER_STYLE = {
+  margin: "5px",
+};
+
 class App extends Component {
 
   constructor () {
@@ -32,7 +36,7 @@ class App extends Component {
       );
     } else {
       return (
-        <div>
+        <div style={CONTAINER_STYLE}>
           <Script text={this.state.script} />
           <VLayout gutter={10}>
             { this.state.reps.map((rep) => <Rep rep={rep} key={rep.bioguide_id} />) }

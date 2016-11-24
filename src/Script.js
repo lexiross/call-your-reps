@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 const TEXT_STYLE = {
-  border: "1px solid #fafafa",
+  border: "2px solid #890bdd",
+  borderRadius: "5px",
   backgroundColor: "#eee",
+  padding: "10px",
+  marginBottom: "15px",
 };
 
 export default class Script extends Component {

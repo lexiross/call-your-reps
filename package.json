@@ -2,6 +2,7 @@
   "name": "call-your-reps",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://lexiross.github.io/callyourreps",
   "devDependencies": {
     "react-scripts": "0.7.0"
   },
