@@ -2,8 +2,9 @@
   "name": "call-your-reps",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://lexiross.github.io/callyourreps",
+  "homepage": "http://lexiross.github.io/call-your-reps",
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.7.0"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   }
 }
