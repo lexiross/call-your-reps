@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {VLayout} from "react-flexbox-layout";
+import {VLayout}            from "react-flexbox-layout";
 
 const HEADER_STYLE = {
   fontSize: "20px",

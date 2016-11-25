@@ -10,6 +10,7 @@
   "dependencies": {
     "promise-polyfill": "^6.0.2",
     "react": "^15.4.0",
+    "react-document-title": "^2.0.2",
     "react-dom": "^15.4.0",
     "react-flexbox-layout": "0.0.21",
     "whatwg-fetch": "^2.0.1"

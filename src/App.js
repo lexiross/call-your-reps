@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ZipForm              from "./ZipForm";
 import Rep                  from "./Rep";
 import Script               from "./Script";
+import Footer               from "./Footer";
 import { VLayout }          from 'react-flexbox-layout';
 
 const SPREADSHEET_KEY = "174f0WBSVNSdcQ5_S6rWPGB3pNCsruyyM_ZRQ6QUhGmo";
@@ -41,6 +42,7 @@ class App extends Component {
           <VLayout gutter={10}>
             { this.state.reps.map((rep) => <Rep rep={rep} key={rep.bioguide_id} />) }
           </VLayout>
+          <Footer />
         </div>
       );
     }
