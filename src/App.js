@@ -19,6 +19,7 @@ class App extends Component {
   constructor () {
     super();
     this.state = {
+      error: false,
       reps: null,
       script: null,
     };
@@ -29,20 +30,25 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.reps) {
+    if (!this.state.reps || !this.state.reps.length) {
       return (
         <ZipForm
+          error={this.state.error}
+          noReps={!!this.state.reps && !this.state.reps.length}
           onSubmit={this._fetchReps}
         />
       );
     } else {
       return (
         <div style={CONTAINER_STYLE}>
-          <Script text={this.state.script} />
-          <VLayout gutter={10}>
-            { this.state.reps.map((rep) => <Rep rep={rep} key={rep.bioguide_id} />) }
+          <VLayout gutter={15}>
+            <a href="#" onClick={this._reset}>Back</a>
+            <Script text={this.state.script} />
+            <VLayout gutter={10}>
+              { this.state.reps.map((rep) => <Rep rep={rep} key={rep.bioguide_id} />) }
+            </VLayout>
+            <Footer />
           </VLayout>
-          <Footer />
         </div>
       );
     }
@@ -52,14 +58,23 @@ class App extends Component {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_KEY}/values/${SHEET_NAME}!${CELL}?key=${GOOGLE_API_KEY}`;
     window.fetch(url)
       .then((res) => res.json())
-      .then((data) => this.setState({script: data.values[0][0]}));
+      .then((data) => this.setState({script: data.values[0][0]}))
+      .catch((err) => this.setState({error: true}));
   }
 
   _fetchReps = (zipCode) => {
     window.fetch(`https://congress.api.sunlightfoundation.com/legislators/locate?zip=${zipCode}`)
       .then((res) => res.json())
-      .then((data) => this.setState({reps: data.results}));
+      .then((data) => this.setState({error: false, reps: data.results}));
 
+  }
+
+  _reset = (e) => {
+    e.preventDefault();
+    this.setState({
+      error: false,
+      reps: null
+    });
   }
 }
 
