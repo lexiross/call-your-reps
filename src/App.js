@@ -57,9 +57,9 @@ class App extends Component {
   _fetchScript = () => {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_KEY}/values/${SHEET_NAME}!${CELL}?key=${GOOGLE_API_KEY}`;
     window.fetch(url)
+      .catch((err) => this.setState({error: true}))
       .then((res) => res.json())
-      .then((data) => this.setState({script: data.values[0][0]}))
-      .catch((err) => this.setState({error: true}));
+      .then((data) => this.setState({script: data.values[0][0]}));
   }
 
   _fetchReps = (zipCode) => {
