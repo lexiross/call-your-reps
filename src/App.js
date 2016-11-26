@@ -57,7 +57,6 @@ class App extends Component {
   _fetchScript = () => {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_KEY}/values/${SHEET_NAME}!${CELL}?key=${GOOGLE_API_KEY}`;
     window.fetch(url)
-      .catch((err) => this.setState({error: true}))
       .then((res) => res.json())
       .then((data) => this.setState({script: data.values[0][0]}));
   }
@@ -65,7 +64,8 @@ class App extends Component {
   _fetchReps = (zipCode) => {
     window.fetch(`https://congress.api.sunlightfoundation.com/legislators/locate?zip=${zipCode}`)
       .then((res) => res.json())
-      .then((data) => this.setState({error: false, reps: data.results}));
+      .then((data) => this.setState({error: false, reps: data.results}))
+      .catch((err) => this.setState({error: true}));
 
   }
 
